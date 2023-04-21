@@ -20,4 +20,13 @@ router.get('/createfiles', function(req, res,) {
   })
 });
 
+router.get('/createfolder',function(req,res){
+  fs.mkdir(`./uploads/${  req.query.foldername}`,0o777,function(err){
+    if(err) throw error;
+    else{
+      res.redirect("/")
+    }
+  })
+})
+
 module.exports = router;
