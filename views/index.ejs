@@ -19,7 +19,7 @@
         <div class="icon">
           <h5><i id="foldericon" class="ri-folder-3-line"></i></h5>
           <h5><i id="fileicon" class="ri-file-line"></i></h5>
-          <h5><i class="ri-restart-line"></i></h5>
+          <a href="/"><h5><i class="ri-restart-line"></i></h5></a>
 
         </div>
 
@@ -48,9 +48,9 @@
             </div>
             <%}else{%>
               <div id="file">
-                <h5><i class="ri-file-line">
+                <a href="/files/file/<%=data.name%>"><h5><i class="ri-file-line">
                     <%=data.name%>
-                  </i></h5>
+                  </i></h5></a>
                 <div class="icon">
                   <h5> <i class="ri-pencil-line"></i> </h5>
                   <h5><i class="ri-delete-bin-line"></i></h5>
