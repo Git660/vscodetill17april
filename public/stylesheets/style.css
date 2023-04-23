@@ -66,3 +66,8 @@ html,body{
   font-weight: 700;
   /* background-color: darkorange; */
 }
+a{
+  text-decoration: none;
+  
+  color: #000;
+}
