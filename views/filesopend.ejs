@@ -19,7 +19,9 @@
         <div class="icon">
           <h5><i id="foldericon" class="ri-folder-3-line"></i></h5>
           <h5><i id="fileicon" class="ri-file-line"></i></h5>
-          <a href="/"><h5><i class="ri-restart-line"></i></h5></a>
+          <a href="/">
+            <h5><i class="ri-restart-line"></i></h5>
+          </a>
 
         </div>
 
@@ -48,9 +50,11 @@
             </div>
             <%}else{%>
               <div id="file">
-                <a href="/files/<%=elem.name%>"><h5><i class="ri-file-line">
-                    <%=elem.name%>
-                  </i></h5></a>
+                <a href="/files/<%=elem.name%>">
+                  <h5><i class="ri-file-line">
+                      <%=elem.name%>
+                    </i></h5>
+                </a>
                 <div class="icon">
                   <h5> <i class="ri-pencil-line"></i> </h5>
                   <h5><i class="ri-delete-bin-line"></i></h5>
@@ -69,11 +73,17 @@
     <div id="right">
       <div id="rnav">
         <div id="openfile">
-        <h5 ><%=filename%> <i class="ri-close-line"></i></h5>
+          <h5>
+            <%=filename%> <i class="ri-close-line"></i>
+          </h5>
+
 
         </div>
+       
       </div>
-    <%=filedata%>
+      <textarea name="textarea" id="" cols="30" rows="10">
+        <%= filedata%>
+      </textarea>       
     </div>
   </div>
   <script>

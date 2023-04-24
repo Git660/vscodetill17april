@@ -73,8 +73,15 @@ a{
 #right #rnav{
   width: 100%;
   height:80px;
-padding: 2vw 3vw;
+padding: 2vw;
   background-color:transparent;
   
   
+}
+textarea{
+  width: 95%;
+  height: 90%;
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
