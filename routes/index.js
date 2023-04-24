@@ -2,11 +2,12 @@ const { error } = require('console');
 var express = require('express');
 var router = express.Router();
 var fs=require("fs")
+var data=[]
 
 /* GET home page. */
 router.get('/', function(req, res,) {
-  fs.readdir("./uploads",{withFileTypes:true},function(err,file){
-    res.render("index",{data:file})
+  fs.readdir("./uploads",{withFileTypes:true},function(err,files){
+    res.render("index",{files})
   })
 });
 
@@ -27,12 +28,15 @@ router.get('/createfolder',function(req,res){
       res.redirect("/")
     }
   })
-})
-router.get("/files/file/:data",function(req,res){
-  // fs.readdir(`./uploads/${data}`,function(err,data){
-  //   res.send(req.params['${data}'])
-  // })
-  res.send(req.params)
-})
+});
+router.get("/files/:filename",function(req,res){
+  fs.readdir("./uploads",{withFileTypes:true},function(err,files){
+    fs.readFile(`./uploads/${req.params.filename}`,"utf-8",function(err,data){
+      res.render("filesopend",{files:files,filename:req.params.filename,filedata:data})
+  
+    })
+  })
+ 
+});
 
 module.exports = router;
