@@ -45,19 +45,19 @@
                 </i></h5>
               <div class="icon">
                 <h5> <i class="ri-pencil-line"></i> </h5>
-                <h5><i class="ri-delete-bin-line"></i></h5>
+              <a href="/delete/<%=elem.name%>"> <h5><i class="ri-delete-bin-line"></i></h5></a> 
               </div>
             </div>
             <%}else{%>
               <div id="file">
                 <a href="/files/<%=elem.name%>">
-                  <h5><i class="ri-file-line">
+                <h5><i class="ri-file-line">
                       <%=elem.name%>
                     </i></h5>
-                </a>
+                </a>   
                 <div class="icon">
                   <h5> <i class="ri-pencil-line"></i> </h5>
-                  <h5><i class="ri-delete-bin-line"></i></h5>
+                  <a href="/deletefile/<%=elem.name%>"> <h5><i class="ri-delete-bin-line"></i></h5></a>
                 </div>
               </div>
               <%}%>

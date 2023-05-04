@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title><%=filename%> </title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="../stylesheets/style.css">
 </head>
@@ -45,7 +45,7 @@
                 </i></h5>
               <div class="icon">
                 <h5> <i class="ri-pencil-line"></i> </h5>
-                <h5><i class="ri-delete-bin-line"></i></h5>
+                <a href="/delete/<%=elem.name%>"><h5><i class="ri-delete-bin-line"></i></h5></a>
               </div>
             </div>
             <%}else{%>
@@ -56,8 +56,8 @@
                     </i></h5>
                 </a>
                 <div class="icon">
-                  <h5> <i class="ri-pencil-line"></i> </h5>
-                  <h5><i class="ri-delete-bin-line"></i></h5>
+                 <a href="/edit/<%=elem.name%>"> <h5> <i class="ri-pencil-line"></i> </h5></a>
+                 <a href="/deletefile/<%=elem.name%>"><h5><i class="ri-delete-bin-line"></i></h5> </a>
                 </div>
               </div>
               <%}%>
@@ -81,9 +81,14 @@
         </div>
        
       </div>
-      <textarea name="textarea" id="" cols="30" rows="10">
-        <%= filedata%>
-      </textarea>       
+      
+
+        <textarea  name="textarea" id="" cols="30" rows="10">
+          <%= filedata%>
+        </textarea> 
+
+      
+           
     </div>
   </div>
   <script>
