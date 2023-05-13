@@ -1,112 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=filename%></title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylesheets/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%=filename%> </title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="../stylesheets/style.css">
-</head>
-
-<body>
-  <div id="main">
-    <div id="left">
-      <h2 id="ttl">Sasta vs Code</h2>
-      <div class="nav">
-        <h3>Folder</h3>
-        <div class="icon">
-          <h5><i id="foldericon" class="ri-folder-3-line"></i></h5>
-          <h5><i id="fileicon" class="ri-file-line"></i></h5>
-          <a href="/">
-            <h5><i class="ri-restart-line"></i></h5>
-          </a>
-
+  <body>
+    <div id="main">
+      <div id="left">
+        <h2 id="ttl">Sasta vs Code</h2>
+        <div class="nav">
+          <h3>Folder</h3>
+          <div class="icon">
+            <h5><i id="foldericon" class="ri-folder-3-line"></i></h5>
+            <h5><i id="fileicon" class="ri-file-line"></i></h5>
+            <a href="/">
+              <h5><i class="ri-restart-line"></i></h5>
+            </a>
+          </div>
         </div>
-
-
-      </div>
-      <div class="forms">
-        <form id="fileform" action="/createfiles">
-          <input type="text" placeholder="enterfilename" name="filename">
-        </form>
-        <form id="folderform" action="/createfolder">
-          <input type="text" placeholder="enterfoldername" name="foldername">
-        </form>
-      </div>
-      <div class="files">
-
-        <%files.forEach(function(elem){%>
-          <%if(elem.isDirectory()==true){%>
-            <div id="file">
-              <h5><i class="ri-folder-3-line">
-                  <%=elem.name%>
-                </i></h5>
-              <div class="icon">
-                <h5> <i class="ri-pencil-line"></i> </h5>
-                <a href="/delete/<%=elem.name%>"><h5><i class="ri-delete-bin-line"></i></h5></a>
-              </div>
+        <div class="forms">
+          <form class="cf" id="fileform" action="/createfiles">
+            <input type="text" placeholder="enterfilename" name="filename" />
+          </form>
+          <form class="cf" id="folderform" action="/createfolder">
+            <input
+              type="text"
+              placeholder="enterfoldername"
+              name="foldername"
+            />
+          </form>
+        </div>
+        <div class="files">
+          <%files.forEach(function(elem){%> <%if(elem.isDirectory()==true){%>
+          <div id="file">
+            <h5><i class="ri-folder-3-line"> <%=elem.name%> </i></h5>
+            <div class="icon">
+              <h5><i class="ri-pencil-line"></i></h5>
+              <a href="/delete/<%=elem.name%>">
+                <h5><i class="ri-delete-bin-line"></i></h5>
+              </a>
             </div>
-            <%}else{%>
-              <div id="file">
-                <a href="/files/<%=elem.name%>">
-                  <h5><i class="ri-file-line">
-                      <%=elem.name%>
-                    </i></h5>
-                </a>
-                <div class="icon">
-                 <a href="/edit/<%=elem.name%>"> <h5> <i class="ri-pencil-line"></i> </h5></a>
-                 <a href="/deletefile/<%=elem.name%>"><h5><i class="ri-delete-bin-line"></i></h5> </a>
-                </div>
-              </div>
-              <%}%>
-
-                <%})%>
-
-
-      </div>
-    </div>
-
-
-
-    <div id="right">
-      <div id="rnav">
-        <div id="openfile">
-          <h5>
-            <%=filename%> <i class="ri-close-line"></i>
-          </h5>
-
-
+          </div>
+          <%}else{%>
+          <div id="file">
+            <a href="/files/<%=elem.name%>">
+              <h5><i class="ri-file-line"> <%=elem.name%> </i></h5>
+            </a>
+            <div class="icon">
+              <a href="/edit/<%=elem.name%>">
+                <h5><i class="ri-pencil-line"></i></h5>
+              </a>
+              <a href="/deletefile/<%=elem.name%>">
+                <h5><i class="ri-delete-bin-line"></i></h5>
+              </a>
+            </div>
+          </div>
+          <%}%> <%})%>
         </div>
-       
       </div>
-      
 
-        <textarea  name="textarea" id="" cols="30" rows="10">
+      <div id="right">
+        <div id="rnav">
+          <div id="openfile">
+            <h5><%=filename%> <i class="ri-close-line"></i></h5>
+          </div>
+        </div>
+
+        <form method="post" action="/save/<%=filename%>">
+          <textarea name="textarea" id="" cols="30" rows="10">
+
           <%= filedata%>
-        </textarea> 
-
-      
-           
+        </textarea
+          >
+          <input type="submit" />
+        </form>
+      </div>
     </div>
-  </div>
-  <script>
-    function chaluband() {
-      document.querySelectorAll("form").forEach(function (val) {
-        val.style.display = "none"
-      })
-    }
-    chaluband()
-    document.querySelector("#fileicon").addEventListener("click", function () {
-      chaluband()
-      document.querySelector("#fileform").style.display = "initial"
-    })
-    document.querySelector("#foldericon").addEventListener("click", function () {
-      chaluband()
-      document.querySelector("#folderform").style.display = "initial"
-    })
-  </script>
-</body>
-
+    <script>
+      function chaluband() {
+        document.querySelectorAll(".cf").forEach(function (val) {
+          val.style.display = "none";
+        });
+      }
+      chaluband();
+      document
+        .querySelector("#fileicon")
+        .addEventListener("click", function () {
+          chaluband();
+          document.querySelector("#fileform").style.display = "initial";
+        });
+      document
+        .querySelector("#foldericon")
+        .addEventListener("click", function () {
+          chaluband();
+          document.querySelector("#folderform").style.display = "initial";
+        });
+    </script>
+  </body>
 </html>

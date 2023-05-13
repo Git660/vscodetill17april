@@ -1,3 +1,4 @@
+const { ifError } = require('assert');
 const { error } = require('console');
 var express = require('express');
 var router = express.Router();
@@ -62,6 +63,14 @@ router.get("/deletefile/:fname",function(req,res){
     }
   })
 
+})
+
+router.post("/save/:filename", function(req,res){
+  fs.writeFile(`./uploads/${req.params.filename}`, `${req.body.textarea}`,function(err,data){
+    // res.redirect(`/files/${req.params.filename}`)
+    res.redirect("/")
+
+  })
 })
 
 
